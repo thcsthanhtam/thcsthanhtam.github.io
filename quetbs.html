@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quét Mã QRCode</title>
+	<script src="http://benhvienanhduong.eu5.net/instascan.min.js"></script>
+	<script src="http://benhvienanhduong.eu5.net/instascan.min.js"></script>
+</head>
+<body>
+  
+    <h1>Quét thẻ BHYT</h1>
+    <form method="get">
+     <center>
+      <textarea name="bn"></textarea><br>
+      <input type="submit" name="hh" value="Truy Xuất">
+     </center>
+    </form>
+<div style="height: 20px;"></div>
+    <video id="preview"></video>
+    <script type="text/javascript">
+      let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+      scanner.addListener('scan', function (content) {
+        alert("Mã Thẻ: " + content)
+        window.location="http://benhvienanhduong.xyz/khambenh/bacsikham/kiemtraquet.php?bn=" + content;
+      });
+      Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+          scanner.start(cameras[0]);
+        } else {
+          console.error('No cameras found.');
+        }
+      }).catch(function (e) {
+        console.error(e);
+      });
+    </script>
+   
+</body>
+</html>
