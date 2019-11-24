@@ -20,7 +20,7 @@
       let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
       scanner.addListener('scan', function (content) {
         alert("Mã Thẻ: " + content)
-        
+        window.location="index.php?loai=" + content + "&bhyt=bhyt";
       });
       Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
